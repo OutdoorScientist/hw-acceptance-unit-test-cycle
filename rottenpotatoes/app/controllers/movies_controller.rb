@@ -5,7 +5,25 @@ class MoviesController < ApplicationController
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
   end
+  
+  #my code
+  def similar_director
+    @movie = Movie.find_by(params[:id])
+    #@movie = params[:title]
+    
+    #Method similar_movies setup in movie.rb 
+    if @movie.director.blank?
+      #according to cucumber feature needs the following flash and redirct to homepage
+      redirect_to movies_path
+      flash[:notice] = "'#[@movie.title}' has no director info"
+    end
+    @movie = Movie.similar_movies(@movie)
+    
+    #@movie = Movie.find(director)
 
+    
+  end
+  
   def index
     @movies = Movie.all
   end
@@ -42,6 +60,6 @@ class MoviesController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:movie).permit(:title, :rating, :director, :description, :release_date)
   end
 end
