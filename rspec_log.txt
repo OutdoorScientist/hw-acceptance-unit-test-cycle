@@ -57,3 +57,13 @@ Failed examples:
 rspec ./spec/controllers/movies_controller_spec.rb:8 # MoviesController Search movie database by the same director should find similar movies if director info exist
 
 Coverage report generated for RSpec to /home/ec2-user/environment/Homeworks/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 22 / 79 LOC (27.85%) covered.
+
+MoviesController
+  Searching for movies with the same director
+    should return to the homepage if no director infor exist
+    should search for similar_movies if director given
+
+Finished in 0.02707 seconds (files took 1.51 seconds to load)
+2 examples, 0 failures
+
+Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/Homeworks/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 70 / 79 LOC (88.61%) covered.
