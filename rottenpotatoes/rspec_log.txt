@@ -1,0 +1,59 @@
+No examples found.
+
+Finished in 0.00041 seconds (files took 1.59 seconds to load)
+0 examples, 0 failures
+
+Coverage report generated for Cucumber Features, RSpec to /home/ec2-user/environment/Homeworks/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 70 / 79 LOC (88.61%) covered.
+
+MoviesController
+  Search movie database by the same director
+    should find similar movies if director info exist (FAILED - 1)
+
+Failures:
+
+  1) MoviesController Search movie database by the same director should find similar movies if director info exist
+     Failure/Error: get :search, {title: 'Star Wars'}
+
+     ThreadError:
+       already initialized
+     # /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_dispatch/http/response.rb:119:in `initialize'
+     # /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_controller/test_case.rb:277:in `recycle!'
+     # /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_controller/test_case.rb:617:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_controller/test_case.rb:67:in `process'
+     # /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/actionpack-4.2.10/lib/action_controller/test_case.rb:514:in `get'
+     # ./spec/controllers/movies_controller_spec.rb:11:in `block (3 levels) in <top (required)>'
+
+1 deprecation warning total
+
+Finished in 0.01915 seconds (files took 1.51 seconds to load)
+1 example, 1 failure
+
+Failed examples:
+
+rspec ./spec/controllers/movies_controller_spec.rb:8 # MoviesController Search movie database by the same director should find similar movies if director info exist
+
+Coverage report generated for RSpec to /home/ec2-user/environment/Homeworks/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 22 / 79 LOC (27.85%) covered.
+
+MoviesController
+  Search movie database by the same director
+    should find similar movies if director info exist (FAILED - 1)
+
+Failures:
+
+  1) MoviesController Search movie database by the same director should find similar movies if director info exist
+     Failure/Error: Movie.expect(:similar_movies).with('Star Wars').and_return(movies)
+
+     NoMethodError:
+       undefined method `expect' for #<Class:0x0000000004cf53b0>
+       Did you mean?  except
+     # /home/ec2-user/.rvm/gems/ruby-2.6.6/gems/activerecord-4.2.10/lib/active_record/dynamic_matchers.rb:26:in `method_missing'
+     # ./spec/controllers/movies_controller_spec.rb:10:in `block (3 levels) in <top (required)>'
+
+Finished in 0.00865 seconds (files took 1.49 seconds to load)
+1 example, 1 failure
+
+Failed examples:
+
+rspec ./spec/controllers/movies_controller_spec.rb:8 # MoviesController Search movie database by the same director should find similar movies if director info exist
+
+Coverage report generated for RSpec to /home/ec2-user/environment/Homeworks/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 22 / 79 LOC (27.85%) covered.

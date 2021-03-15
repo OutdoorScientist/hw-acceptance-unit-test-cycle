@@ -5,6 +5,10 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+Then /(.*) seed movies should exist/ do | n_seeds |
+  Movie.count.should be n_seeds.to_i
+end
+
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
@@ -12,8 +16,14 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
 end
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
-  rating_list.split(', ').each do |rating|
-    step %{I #{uncheck.nil? ? '' : 'un'}check "ratings_#{rating}"}
+  # HINT: use String#split to split up the rating_list, then
+  #   iterate over the ratings and reuse the "When I check..." or
+  #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+  #fail "Unimplemented"
+  rating_list.split(',').each do |r|
+    uncheck ? uncheck("ratings_#{r}") : check("ratings_#{r}")
+  #check(r)
+  #uncheck(r)
   end
 end
 
@@ -23,7 +33,7 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
-
+#HW4 Cucumber scenario: add director to existing movie
 Then /the director of "(.*)" should be "(.*)"/ do |movie_name, director|
   movie = Movie.find_by(title: movie_name)
   expect(page.body.index(movie.director) == director)
