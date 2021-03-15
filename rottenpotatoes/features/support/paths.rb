@@ -14,7 +14,8 @@ module NavigationHelpers
     case page_name
 
     when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
-      
+    
+    #HW4 scenario 1:add director to existing movie
     when /^the edit page for "(.*)"$/
       movie_id = Movie.find_by(title: $1).id
       edit_movie_path(movie_id)
@@ -22,12 +23,12 @@ module NavigationHelpers
     when /^the details page for "(.*)"$/
       movie_id = Movie.find_by(title: $1).id
       movie_path(movie_id)
-      
-    #need to finish code
-    #when /^the Similar Movies page for "(.*)"$/
-      
-      
     
+    #HW4 Scenario 2: find movie with the same director
+    #need to finish code
+    when /^the Similar Movies page for "(.*)"$/
+      search_similar_movies_path($1)
+      
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
